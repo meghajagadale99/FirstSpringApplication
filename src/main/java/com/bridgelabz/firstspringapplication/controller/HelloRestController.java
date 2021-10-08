@@ -1,7 +1,9 @@
 package com.bridgelabz.firstspringapplication.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/hello")
 public class HelloRestController {
@@ -33,4 +35,11 @@ public class HelloRestController {
     public String sayHello(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
         return "Hello" + " " + lastName + "!";
     }
+
+    @PutMapping("/putuser")
+    public String sayHelloUser(@RequestBody User user){
+        log.info(user.toString());
+        return "Hello "+ user.toString();
+    }
+
 }
